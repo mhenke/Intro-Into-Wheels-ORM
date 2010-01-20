@@ -1,1 +1,1 @@
-<cfdump var="#authorObject#">
+<cfdump var="#authors#">
