@@ -12,11 +12,11 @@
 		<cfset author = model("author").findOneByLastName("Henke")>
 	
 		<!--- part 2 --->
-		<cfset user = model("user").findOneByEmailAndPassword("bob,pass")>
+		<cfset user = model("user2").findOneByEmailAndPassword("henke.mike@gmail.com,password")>
 		
 		<!--- part 3 --->
 		<cfset
-			users = model("user").findAllByAgeAndFirstName(
+			users = model("user2").findAllByAgeAndFirstName(
 			values="33,Mike", order="lastname"
 			)
 			>
