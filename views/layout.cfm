@@ -1,6 +1,9 @@
 <!--- Place HTML here that should be used as the default layout of your application --->
 <cfoutput>
 <html>
+	<head>
+		#styleSheetLinkTag("style")#
+	</head>
 	<body>
 
 	<H1>Wheels Object Relational Mapping</H1>

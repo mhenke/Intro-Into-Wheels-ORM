@@ -9,17 +9,15 @@
 	</cffunction>
 
 	<cffunction name="example1">
-		<cfset me = model("author").findOneByLastName("Henke")>
-	</cffunction>
+		<cfset author = model("author").findOneByLastName("Henke")>
 	
-	<cffunction name="example2">
-		<cfset me = model("user").findOneByUserNameAndPassword("bob,pass")>
-	</cffunction>
+		<!--- part 2 --->
+		<cfset user = model("user").findOneByEmailAndPassword("bob,pass")>
 		
-	<cffunction name="example3">
+		<!--- part 3 --->
 		<cfset
-			users = model("user").findAllByCityAndState(
-			values="Buffalo,NY", order="name", page=3
+			users = model("user").findAllByAgeAndFirstName(
+			values="33,Mike", order="lastname"
 			)
 			>
 	</cffunction>
@@ -27,6 +25,6 @@
 	<cffunction name="header">
 		<cfset slide = "Dynamic Finders" />
 		<cfset quote = "All warfare is based on deception." />
-		<cfset examples = "#linkTo(text="Example 1", action="example1")# #linkTo(text="Example 2", action="example2")# #linkTo(text="Example 3", action="example3")#" />
+		<cfset examples = "#linkTo(text="Example 1", action="example1")#" />
 	</cffunction>
 </cfcomponent>

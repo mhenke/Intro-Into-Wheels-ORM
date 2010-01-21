@@ -14,21 +14,22 @@
 		<cfset newAuthor = model("author").new()>
 		<cfset newAuthor.firstName = "John">
 		<cfset newAuthor.lastName = "Doe">
-		
-		<!---<cfset newAuthor.save()>--->
-		
-		<!--- part 2 
-		<cfset newAuthor = model("author").new(params.newAuthor)>
-		<cfset model("author").create(params.newAuthor)>
-		--->
-		
-		<!--- part 3
-		<cfset newAuthor = model("author").new()>
-		<cfset newAuthor.firstName = "Joe">
-		<cfset newAuthor.lastName = "Jones">
 		<cfset newAuthor.save()>
+		
+		<!--- part 2 --->
+		<cfset params.newAuthor = StructNew()>
+		<cfset StructInsert(params.newAuthor, "firstname", "Jane")>
+		<cfset StructInsert(params.newAuthor, "lastname", "Done")>
+		<cfset newAuthor2 = model("author").new(params.newAuthor)>
+		<cfset model("author").create(params.newAuthor)>
+		
+		<!--- part 3 --->
+		<cfset newAuthor3 = model("author").new()>
+		<cfset newAuthor3.firstName = "Joe">
+		<cfset newAuthor3.lastName = "Jones">
+		<cfset newAuthor3.save()>
 		<cfoutput>#newAuthor.id#</cfoutput>
-		 --->
+		
 		 
 	</cffunction>
 	
@@ -40,58 +41,46 @@
 			<cfset flashInsert(message="Author #params.key# was not found")>
 		</cfif>
 		
-		<cfset authorLastName = "THezu" />
+		<cfset authorLastName = "Doe" />
 		<!---<cfset authorLastName = "Henke" />--->
 		
 		<!--- part 2 --->
-		<cfset aTzu = model("author").findOne(lastname="#authorLastName#")>
+		<cfset author2 = model("author").findOne(order="id DESC")>	
 		
-		<!--- part 3
-		<cfset allTzu = model("author").findAll(select="firstname",where="lastname='#authorLastName#'",orderby="firstname")>
-		 --->
+		<!--- part 3 --->
+		<cfset author3 = model("author").findAll(select="firstname",where="lastname='#authorLastName#'",orderby="firstname")>
 		
 	</cffunction>
 	
 	<cffunction name="example3">
-		<cfset post = model("post").findByKey(33)>
-		<cfset post.title = "New version of Wheels just released">
+		
+		<cfset post = model("post").findByKey(1)>
+		<cfset post.title = "This is how to update with findbykey, update title, then save">
 		<cfset post.save()>
 		
-		<!--- part 2
-		<cfset post = model("post").findByKey(33)>
-		<cfset post.update(title="New version of Wheels just released")>
-		--->
+		<!--- part 2 --->
+		<cfset post2 = model("post").findByKey(2)>
+		<cfset post2.update(title="This is how to update with findybykey then update")>
 		
-		<!--- part 3
-		<cfset post = model("post").findByKey(params.key)>
-		<cfset post.update(params.post)>
-		--->
 		
-		<!--- part 4
-		<cfset result = model("post").updateByKey(33, params.post)>
-		--->
+		<!--- part 3 --->
+		<cfset params.key = 3>
+		<cfset params.post = StructNew()>
+		<cfset StructInsert(params.post, "title", "This is how to pass in a structure with a key into findbykey then update")>
+		<cfset post3 = model("post").findByKey(params.key)>
+		<cfset post3.update(params.post)>
 		
-		<!--- part 5
-		<cfset
-			recordsReturned = model("post").updateAll(
-			published=1, publishedAt=Now(), where="published=0"
-			)
-			>
-		--->
+		<!--- part 4 --->
+		<cfset StructUpdate(params.post, "title", "This is how to pass in a structure with a key into updatebykey")>
+		<cfset result = model("post").updateByKey(4, params.post)>
+		
 	</cffunction>
 	
 	<cffunction name="example4">
-		<cfset aPost = model("post").findByKey(33)>
-		<cfset aPost.delete()>
-		
-		<!--- part 2
-		deleteOne() example
-		 --->
-		 
-		 <!--- part 3
-		 deleteAll() example
-		 --->
-		 
+		<cfset aPost = model("post").findByKey(5)>
+		<cfif isObject(aPost)>
+			<cfset aPost.delete()>
+		</cfif>
 	</cffunction>
 	
 	<cffunction name="header">

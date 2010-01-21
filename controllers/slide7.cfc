@@ -5,24 +5,29 @@
 	</cffunction>
 	
 	<cffunction name="index">
-		<cfset redirectTo(action="example1") />
-	</cffunction>
-
-	<cffunction name="example1">
-		<cfset author = model("author")>
+		<cfset redirectTo(action="example1")>
 	</cffunction>
 	
-	<cffunction name="example2">
-		<cfset authorClass = model("author")>
-		<cfset authorObject = authorClass.findByKey(4)>
-		<!--- <cfset authorObject.update(firstName="Joe")> --->
-		<!--- <cfset authorObject.firstName = "Sun"> --->
-		<!--- <cfset authorObject.Save() /> --->
+	<cffunction name="example1">
+		<cfset newUser = model("user").new()>
 	</cffunction>
+
+	<cffunction name="save">
+        <!--- User model from form fields via params --->
+        <cfset newUser = model("user").new(params.newUser)>
+		
+        <!--- Persist new user --->
+        <cfif newUser.save()>
+            <cfset redirectTo(action="success")>
+        <!--- Handle errors --->
+        <cfelse>
+            <cfset renderPage(action="example1")>
+        </cfif>
+    </cffunction>
 	
 	<cffunction name="header">
 		<cfset slide = "Object Validation" />
 		<cfset quote = "Invincibility lies in the defence; the possibility of victory in the attack." />
-		<cfset examples = "#linkTo(text="Example 1", action="example1")# #linkTo(text="Example 2", action="example2")#" />
+		<cfset examples = "#linkTo(text="Example 1", action="example1")#" />
 	</cffunction>
 </cfcomponent>
