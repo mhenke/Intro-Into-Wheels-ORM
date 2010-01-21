@@ -13,7 +13,7 @@
 <span style='color: Teal; background-color: '> 12</span>&lt;cfset author2 = model(<span style=' color: Maroon;'>"author"</span>).findOne(order=<span style=' color: Maroon;'>"id DESC"</span>)&gt;    
 <span style='color: Teal; background-color: '> 13</span>
 <span style='color: Teal; background-color: '> 14</span>&lt;!--- part <span style=' color: Maroon;'>3</span> ---&gt;
-<span style='color: Teal; background-color: '> 15</span>&lt;cfset author3 = model(<span style=' color: Maroon;'>"author"</span>).findAll(select=<span style=' color: Maroon;'>"firstname"</span>,where=<span style=' color: Maroon;'>"lastname='#authorLastName#'"</span>,orderby=<span style=' color: Maroon;'>"firstname"</span>)&gt;</pre>
+<span style='color: Teal; background-color: '> 15</span>&lt;cfset author3 = model(<span style=' color: Maroon;'>"author"</span>).findAll(select=<span style=' color: Maroon;'>"firstname"</span>,where=<span style=' color: Maroon;'>"lastname='#authorLastName#'"</span>,order=<span style=' color: Maroon;'>"firstname"</span>)&gt;</pre>
 
 	<p>Part 1</p>
 	<cfif flashKeyExists("message")>

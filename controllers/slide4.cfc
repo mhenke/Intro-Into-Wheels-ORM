@@ -48,7 +48,7 @@
 		<cfset author2 = model("author").findOne(order="id DESC")>	
 		
 		<!--- part 3 --->
-		<cfset author3 = model("author").findAll(select="firstname",where="lastname='#authorLastName#'",orderby="firstname")>
+		<cfset author3 = model("author").findAll(select="firstname",where="lastname='#authorLastName#'",order="firstname")>
 		
 	</cffunction>
 	
