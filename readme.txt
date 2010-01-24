@@ -1,8 +1,13 @@
-Code for presentation of ColdFusion On Wheels Orm.
+Code for presentation of ColdFusion On Wheels Orm. 
+http://github.com/mhenke/Intro-Into-Wheels-ORM
 
-Slides Here:
-http://docs.google.com/present/view?id=dc2sb454_393fbzj9pg5 
+Slides: http://bit.ly/6PRWN1
 
+Recording: http://bit.ly/76ByBB
+
+Speaker Notes: http://bit.ly/77meFw
+
+Outline: http://bit.ly/4SHqLX
 
 Database:
 Run the mysql.sql script
